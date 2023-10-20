@@ -2,9 +2,11 @@ export class UpdateCitaDto {
 
     private constructor(
         public readonly id: number,
-        public readonly fechaCreacion:string,
+        public readonly fechaCreacion:Date,
+        public readonly pacienteID:number,
+        public readonly Paciente:string,
         public readonly doctorId: string,
-        public readonly consultorioId: string
+        public readonly consultorioId: string,
     ){}
   
     get values() {
@@ -12,6 +14,8 @@ export class UpdateCitaDto {
   
       if ( this.id ) returnObj.name = this.id;
       if ( this.fechaCreacion ) returnObj.genre = this.fechaCreacion;
+      if ( this.pacienteID ) returnObj.genre = this.pacienteID;
+      if ( this.Paciente ) returnObj.genre = this.Paciente;
       if ( this.doctorId ) returnObj.genre = this.doctorId;
       if ( this.consultorioId ) returnObj.genre = this.consultorioId;
       return returnObj;
@@ -20,16 +24,16 @@ export class UpdateCitaDto {
   
     static create( props: {[key:string]: any} ): [string?, UpdateCitaDto?]  {
   
-      const { id, fechaCreacion, doctorId, consultorioId } = props;
+      const { id, fechaCreacion, pacienteID, Paciente, doctorId, consultorioId } = props;
   
       if ( !id || isNaN( Number(id)) ) {
         return ['id must be a valid number'];
       }
   
-      if ( !id && !fechaCreacion && !doctorId && !consultorioId) {
+      if ( !fechaCreacion && !pacienteID && !Paciente && !doctorId && !consultorioId ) {
         return ['At least one property must be provided'];
       }
-      return [undefined, new UpdateCitaDto(id, fechaCreacion, doctorId, consultorioId)];
+      return [undefined, new UpdateCitaDto(id, fechaCreacion, pacienteID, Paciente, doctorId, consultorioId)];
     }
   
   

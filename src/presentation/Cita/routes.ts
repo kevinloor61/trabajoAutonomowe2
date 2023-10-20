@@ -1,15 +1,15 @@
 import { Router } from 'express';
-import { CitasController } from './controller';
+import { CitaController } from './controller';
 
 export class CitaRoutes {
   static get routes(): Router {
     const router = Router();
-    const CitaController = new CitasController();
-    router.get('/', CitaController.getCitas);
-    router.get('/:id', CitaController.getCitas );
-    router.post('/', CitaController.createCita );
-    router.put('/:id', CitaController.updateCitas );
-    router.delete('/:id', CitaController.deleteCitas );
+    const citaController = new CitaController();
+    router.get('/',citaController.getCita);
+    router.get('/:id', citaController.getCita );
+    router.post('/', citaController.createCita );
+    router.put('/:id', citaController.updateCita );
+    router.delete('/:id', citaController.deleteCita );
     return router;
   }
 }

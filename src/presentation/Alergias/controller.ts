@@ -7,8 +7,8 @@ export class AlergiasController {
   //* DI
   constructor() { }
   public getAlergias = async( req: Request, res: Response ) => {
-    const Alergias = await prisma.Alergias.findMany();
-    return res.json( Alergias );
+    const alergias = await prisma.alergias.findMany();
+    return res.json( alergias );
   };
 
 
@@ -16,16 +16,16 @@ export class AlergiasController {
 
   public getAlergiasById = async( req: Request, res: Response ) => {
     const id = +req.params.id;
-    //    localhost:3000/movies/1
+    //    localhost:3000/Alergias/1
     if ( isNaN( id ) ) return res.status( 400 ).json( { error: 'ID argument is not a number' } );
 
-    const Alergias = await prisma.Alergias.findFirst({
+    const alergias = await prisma.alergias.findFirst({
       where: { id }
     });
     
-    ( Alergias )
-      ? res.json( Alergias )
-      : res.status( 404 ).json( { error: `Movie with id ${ id } not found` } );
+    ( alergias )
+      ? res.json( alergias )
+      : res.status( 404 ).json( { error: `Alergias with id ${ id } not found` } );
   };
 
 
@@ -36,11 +36,11 @@ export class AlergiasController {
     const [error, createAlergiaDto] = CreateAlergiaDto.create(req.body);
     if ( error ) return res.status(400).json({ error });
 
-    const doctor = await prisma.doctor.create({
+    const alergias = await prisma.alergias.create({
       data: createAlergiaDto!
     });
 
-    res.json( doctor );
+    res.json( alergias );
 
   };
 
@@ -51,11 +51,11 @@ export class AlergiasController {
     const [error, updateAlergiasDto] = UpdateAlergiaDto.create({...req.body, id});
     if ( error ) return res.status(400).json({ error });
     
-    const Alergias = await prisma.Alergias.findFirst({
+    const alergias = await prisma.alergias.findFirst({
       where: { id }
     });
-    if ( !Alergias ) return res.status( 404 ).json( { error: `Movie with id ${ id } not found` } );
-    const updatealergia = await prisma.Alergias.update({
+    if ( !alergias ) return res.status( 404 ).json( { error: `Alergias with id ${ id } not found` } );
+    const updatealergia = await prisma.alergias.update({
       where: { id },
       data: updateAlergiasDto!.values
     });
@@ -65,16 +65,16 @@ export class AlergiasController {
 
   public deleteAlergias = async(req:Request, res: Response) => {
     const id = +req.params.id;
-    const Alergias = await prisma.Alergias.findFirst({
+    const alergias = await prisma.alergias.findFirst({
       where: { id }
     });
 
-    if ( !Alergias ) return res.status(404).json({ error: `Movie with id ${ id } not found` });
-    const deleted = await prisma.doctor.delete({
+    if ( !alergias ) return res.status(404).json({ error: `Alergias with id ${ id } not found` });
+    const deleted = await prisma.alergias.delete({
       where: { id }
     });
     ( deleted ) 
       ? res.json( deleted )
-      : res.status(400).json({ error: `Movie with id ${ id } not found` });
+      : res.status(400).json({ error: `Alergias with id ${ id } not found` });
   }
 }

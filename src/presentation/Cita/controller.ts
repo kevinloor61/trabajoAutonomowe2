@@ -3,29 +3,29 @@ import { prisma } from '../../data/postgres';
 import { CreateCitaDto, UpdateCitaDto } from '../../domain/dtos';
 
 
-export class CitasController {
+export class CitaController {
   //* DI
   constructor() { }
-  public getCitas = async( req: Request, res: Response ) => {
-    const Citas = await prisma.Citas.findMany();
-    return res.json( Citas );
+  public getCita = async( req: Request, res: Response ) => {
+    const cita = await prisma.cita.findMany();
+    return res.json( cita );
   };
 
 
 
 
-  public getCitasById = async( req: Request, res: Response ) => {
+  public getCitaById = async( req: Request, res: Response ) => {
     const id = +req.params.id;
-    //    localhost:3000/movies/1
+    //    localhost:3000/Cita/1
     if ( isNaN( id ) ) return res.status( 400 ).json( { error: 'ID argument is not a number' } );
 
-    const Citas = await prisma.Citas.findFirst({
+    const cita = await prisma.cita.findFirst({
       where: { id }
     });
     
-    ( Citas )
-      ? res.json( Citas )
-      : res.status( 404 ).json( { error: `Movie with id ${ id } not found` } );
+    ( cita )
+      ? res.json( cita )
+      : res.status( 404 ).json( { error: `Cita with id ${ id } not found` } );
   };
 
 
@@ -36,45 +36,45 @@ export class CitasController {
     const [error, createCitaDto] = CreateCitaDto.create(req.body);
     if ( error ) return res.status(400).json({ error });
 
-    const doctor = await prisma.doctor.create({
+    const cita = await prisma.cita.create({
       data: createCitaDto!
     });
 
-    res.json( doctor );
+    res.json( cita );
 
   };
 
 
 
-  public updateCitas = async( req: Request, res: Response ) => {
+  public updateCita = async( req: Request, res: Response ) => {
     const id = +req.params.id;
-    const [error, updateCitasDto] = UpdateCitaDto.create({...req.body, id});
+    const [error, updateCitaDto] = UpdateCitaDto.create({...req.body, id});
     if ( error ) return res.status(400).json({ error });
     
-    const Citas = await prisma.Citas.findFirst({
+    const cita = await prisma.cita.findFirst({
       where: { id }
     });
-    if ( !Citas ) return res.status( 404 ).json( { error: `Movie with id ${ id } not found` } );
-    const updatecita = await prisma.Citas.update({
+    if ( !cita ) return res.status( 404 ).json( { error: `Cita with id ${ id } not found` } );
+    const updatecita = await prisma.cita.update({
       where: { id },
-      data: updateCitasDto!.values
+      data: updateCitaDto!.values
     });
     res.json( updatecita );
   }
 
 
-  public deleteCitas = async(req:Request, res: Response) => {
+  public deleteCita = async(req:Request, res: Response) => {
     const id = +req.params.id;
-    const Citas = await prisma.Citas.findFirst({
+    const cita = await prisma.cita.findFirst({
       where: { id }
     });
 
-    if ( !Citas ) return res.status(404).json({ error: `Movie with id ${ id } not found` });
-    const deleted = await prisma.doctor.delete({
+    if ( !cita ) return res.status(404).json({ error: `Cita with id ${ id } not found` });
+    const deleted = await prisma.cita.delete({
       where: { id }
     });
     ( deleted ) 
       ? res.json( deleted )
-      : res.status(400).json({ error: `Movie with id ${ id } not found` });
+      : res.status(400).json({ error: `Cita with id ${ id } not found` });
   }
 }
