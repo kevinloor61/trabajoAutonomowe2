@@ -16,7 +16,7 @@ export class DoctorController {
 
   public getDoctorById = async( req: Request, res: Response ) => {
     const id = +req.params.id;
-    //    localhost:3000/movies/1
+    //    localhost:3000/Doctor/1
     if ( isNaN( id ) ) return res.status( 400 ).json( { error: 'ID argument is not a number' } );
 
     const doctor = await prisma.doctor.findFirst({
@@ -25,7 +25,7 @@ export class DoctorController {
     
     ( doctor )
       ? res.json( doctor )
-      : res.status( 404 ).json( { error: `Movie with id ${ id } not found` } );
+      : res.status( 404 ).json( { error: `Doctor with id ${ id } not found` } );
   };
 
 
@@ -51,10 +51,10 @@ export class DoctorController {
     const [error, updateDoctorDto] = UpdateDoctorDto.create({...req.body, id});
     if ( error ) return res.status(400).json({ error });
     
-    const movie = await prisma.doctor.findFirst({
+    const doctor = await prisma.doctor.findFirst({
       where: { id }
     });
-    if ( !movie ) return res.status( 404 ).json( { error: `Movie with id ${ id } not found` } );
+    if ( !doctor ) return res.status( 404 ).json( { error: `Doctor with id ${ id } not found` } );
     const updatedoctor = await prisma.doctor.update({
       where: { id },
       data: updateDoctorDto!.values
@@ -69,12 +69,12 @@ export class DoctorController {
       where: { id }
     });
 
-    if ( !doctor ) return res.status(404).json({ error: `Movie with id ${ id } not found` });
+    if ( !doctor ) return res.status(404).json({ error: `Doctor with id ${ id } not found` });
     const deleted = await prisma.doctor.delete({
       where: { id }
     });
     ( deleted ) 
       ? res.json( deleted )
-      : res.status(400).json({ error: `Movie with id ${ id } not found` });
+      : res.status(400).json({ error: `Doctor with id ${ id } not found` });
   }
 }
