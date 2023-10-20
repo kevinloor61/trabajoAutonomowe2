@@ -14,7 +14,7 @@ export class AppRoutes {
   static get routes(): Router {
 
     const router = Router();
-
+    //localhost:3000/api/Doctor
     router.use('/api/Doctor', DoctorRoutes.routes );
     router.use('/api/Alergias', AlergiasRoutes.routes );
     router.use('/api/Cita', CitaRoutes.routes );
