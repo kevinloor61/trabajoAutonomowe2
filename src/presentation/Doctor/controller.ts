@@ -54,7 +54,7 @@ export class DoctorController {
     const doctor = await prisma.doctor.findFirst({
       where: { id }
     });
-    if ( !doctor ) return res.status( 404 ).json( { error: `Movie with id ${ id } not found` } );
+    if ( !doctor ) return res.status( 404 ).json( { error: `Doctor with id ${ id } not found` } );
     const updatedoctor = await prisma.doctor.update({
       where: { id },
       data: updateDoctorDto!.values
