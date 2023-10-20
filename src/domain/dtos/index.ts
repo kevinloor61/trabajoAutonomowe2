@@ -9,3 +9,5 @@ export * from './Pacientes/create-Pacientes.dto';
 export * from './Pacientes/update-Pacientes.dto';
 export * from './ActividadesDiarias/create-ActividadesDiarias.dto';
 export * from './ActividadesDiarias/update-ActividadesDiarias.dto';
+export * from './Consultorio/create-consultorio.dto';
+export * from './Consultorio/update-consultorio.dto';
