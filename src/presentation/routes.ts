@@ -20,7 +20,7 @@ export class AppRoutes {
     router.use('/api/Cita', CitaRoutes.routes );
     router.use('/api/Paciente', PacienteRoutes.routes);
     router.use('/api/ActividadesDiarias', ActividadesDiariasRoutes.routes );
-    router.use('/api/Consultorio', Consultorio.routes );
+    router.use('/api/Consultorio', ConsultorioRoutes.routes );
     return router;
   }
 
