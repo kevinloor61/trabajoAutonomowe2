@@ -3,10 +3,11 @@ export class UpdateCitaDto {
     private constructor(
         public readonly id: number,
         public readonly fechaCreacion:Date,
-        public readonly pacienteID:number,
-        public readonly Paciente:string,
-        public readonly doctorId: string,
-        public readonly consultorioId: string,
+        public readonly fechaProgramada:Date,
+        public readonly pacienteId:number,
+        public readonly doctorId: number,
+        public readonly consultorioId: number,
+     
     ){}
   
     get values() {
@@ -14,8 +15,8 @@ export class UpdateCitaDto {
   
       if ( this.id ) returnObj.name = this.id;
       if ( this.fechaCreacion ) returnObj.genre = this.fechaCreacion;
-      if ( this.pacienteID ) returnObj.genre = this.pacienteID;
-      if ( this.Paciente ) returnObj.genre = this.Paciente;
+      if ( this.fechaProgramada ) returnObj.genre = this.fechaProgramada;
+      if ( this.pacienteId ) returnObj.genre = this.pacienteId;
       if ( this.doctorId ) returnObj.genre = this.doctorId;
       if ( this.consultorioId ) returnObj.genre = this.consultorioId;
       return returnObj;
@@ -24,16 +25,16 @@ export class UpdateCitaDto {
   
     static create( props: {[key:string]: any} ): [string?, UpdateCitaDto?]  {
   
-      const { id, fechaCreacion, pacienteID, Paciente, doctorId, consultorioId } = props;
+      const { id, fechaCreacion, fechaProgramada, pacienteID, doctorId, consultorioId } = props;
   
       if ( !id || isNaN( Number(id)) ) {
         return ['id must be a valid number'];
       }
   
-      if ( !fechaCreacion && !pacienteID && !Paciente && !doctorId && !consultorioId ) {
+      if ( !fechaCreacion && !fechaProgramada && !pacienteID && !doctorId  && !consultorioId ) {
         return ['At least one property must be provided'];
       }
-      return [undefined, new UpdateCitaDto(id, fechaCreacion, pacienteID, Paciente, doctorId, consultorioId)];
+      return [undefined, new UpdateCitaDto(id, fechaCreacion, fechaProgramada, pacienteID, doctorId, consultorioId )];
     }
   
   
