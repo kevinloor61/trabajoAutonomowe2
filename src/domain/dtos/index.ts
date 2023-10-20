@@ -5,3 +5,5 @@ export * from './Alergias/create-Alergias.dto';
 export * from './Alergias/update-Alergias.dto';
 export * from './Cita/create-Cita.dto';
 export * from './Cita/update-Cita.dto';
+export * from './Pacientes/create-Pacientes.dto';
+export * from './Pacientes/update-Pacientes.dto';
