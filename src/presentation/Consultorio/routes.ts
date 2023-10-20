@@ -4,13 +4,13 @@ import { ConsultorioController } from './controller';
 export class ConsultorioRoutes {
   static get routes(): Router {
     const router = Router();
-    const ConsultoriosController = new ConsultorioController();
-    router.get('/', ConsultoriosController.getConsultorio);
-    router.get('/:id', ConsultoriosController.getConsultorioById );
+    const consultoriosController = new ConsultorioController();
+    router.get('/', consultoriosController.getConsultorio);
+    router.get('/:id', consultoriosController.getConsultorioById );
     
-    router.post('/', ConsultorioController.createConsultorio );
-    router.put('/:id', ConsultoriosController.updateConsultorio );
-    router.delete('/:id', ConsultoriosController.deleteConsultorio );
+    router.post('/', consultoriosController.createConsultorio );
+    router.put('/:id', consultoriosController.updateConsultorio );
+    router.delete('/:id', consultoriosController.deleteConsultorio );
     return router;
   }
 }

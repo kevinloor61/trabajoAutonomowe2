@@ -4,9 +4,6 @@ import { CreateConsultorioDto, UpdateConsultorioDto } from '../../domain/dtos';
 
 
 export class ConsultorioController {
-  static createConsultorio(arg0: string, createConsultorio: any) {
-      throw new Error('Method not implemented.');
-  }
   //* DI
   constructor() { }
   public getConsultorio = async( req: Request, res: Response ) => {
@@ -19,7 +16,7 @@ export class ConsultorioController {
 
   public getConsultorioById = async( req: Request, res: Response ) => {
     const id = +req.params.id;
-    //    localhost:3000/Doctor/1
+    
     if ( isNaN( id ) ) return res.status( 400 ).json( { error: 'ID argument is not a number' } );
 
     const consultorio = await prisma.consultorio.findFirst({
@@ -58,11 +55,11 @@ export class ConsultorioController {
       where: { id }
     });
     if ( !consultorio ) return res.status( 404 ).json( { error: `Consultorio with id ${ id } not found` } );
-    const updateConsultorio = await prisma.consultorio.update({
+    const updateconsultorio = await prisma.consultorio.update({
       where: { id },
       data: updateConsultorioDto!.values
     });
-    res.json( updateConsultorio );
+    res.json( updateconsultorio );
   }
 
 
