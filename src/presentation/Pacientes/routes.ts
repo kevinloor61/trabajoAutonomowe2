@@ -1,16 +1,16 @@
 import { Router } from 'express';
 import { PacienteController } from './controller';
 
-export class DoctorRoutes {
+export class PacienteRoutes {
   static get routes(): Router {
     const router = Router();
-    const doctorController = new PacienteController();
-    router.get('/', doctorController.getDoctor);
-    router.get('/:id', doctorController.getDoctorById );
+    const pacienteController = new PacienteController();
+    router.get('/', PacienteController.getPaciente);
+    router.get('/:id', PacienteController.getPaciente );
     
-    router.post('/', doctorController.createDoctor );
-    router.put('/:id', doctorController.updateDoctor );
-    router.delete('/:id', doctorController.deleteDoctor );
+    router.post('/', PacienteController.getPaciente );
+    router.put('/:id', PacienteController.updatePaciente );
+    router.delete('/:id', PacienteController.getPaciente );
     return router;
   }
 }

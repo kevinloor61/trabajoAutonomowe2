@@ -4,6 +4,12 @@ import { CreatePacienteDto, UpdatePacienteDto } from '../../domain/dtos';
 
 
 export class PacienteController {
+  static updatePaciente(arg0: string, updatePaciente: any) {
+      throw new Error('Method not implemented.');
+  }
+  static getPaciente(arg0: string, getPaciente: any) {
+      throw new Error('Method not implemented.');
+  }
   //* DI
   constructor() { }
   public getPaciente = async( req: Request, res: Response ) => {
@@ -36,7 +42,7 @@ export class PacienteController {
     const [error, createPacienteDto] = CreatePacienteDto.create(req.body);
     if ( error ) return res.status(400).json({ error });
 
-    const paciente = await prisma.doctor.create({
+    const paciente = await prisma.paciente.create({
       data: createPacienteDto!
     });
 
@@ -51,7 +57,7 @@ export class PacienteController {
     const [error, updatePacienteDto] = UpdatePacienteDto.create({...req.body, id});
     if ( error ) return res.status(400).json({ error });
     
-    const paciente = await prisma.doctor.findFirst({
+    const paciente = await prisma.paciente.findFirst({
       where: { id }
     });
     if ( !paciente ) return res.status( 404 ).json( { error: `Paciente with id ${ id } not found` } );
@@ -70,7 +76,7 @@ export class PacienteController {
     });
 
     if ( !Paciente ) return res.status(404).json({ error: `Paciente with id ${ id } not found` });
-    const deleted = await prisma.doctor.delete({
+    const deleted = await prisma.paciente.delete({
       where: { id }
     });
     ( deleted ) 
