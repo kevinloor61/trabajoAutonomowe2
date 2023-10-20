@@ -7,3 +7,5 @@ export * from './Cita/create-Cita.dto';
 export * from './Cita/update-Cita.dto';
 export * from './Pacientes/create-Pacientes.dto';
 export * from './Pacientes/update-Pacientes.dto';
+export * from './ActividadesDiarias/create-ActividadesDiarias.dto';
+export * from './ActividadesDiarias/update-ActividadesDiarias.dto';
