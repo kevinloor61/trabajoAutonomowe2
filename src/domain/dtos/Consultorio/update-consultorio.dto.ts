@@ -4,7 +4,7 @@ export class UpdateConsultorioDto {
       public readonly id: number,
       public readonly numeroPiso: string,
       public readonly numeroPuerta: string,
-      public readonly Cita: string,
+     
     
     ){}
   
@@ -14,7 +14,7 @@ export class UpdateConsultorioDto {
       if ( this.id ) returnObj.name = this.id;
       if ( this.numeroPiso ) returnObj.genre = this.numeroPiso;
       if ( this.numeroPuerta ) returnObj.genre = this.numeroPuerta;
-      if ( this.Cita ) returnObj.genre = this.Cita;
+      
       
   
       return returnObj;
@@ -23,16 +23,16 @@ export class UpdateConsultorioDto {
   
     static create( props: {[key:string]: any} ): [string?, UpdateConsultorioDto?]  {
   
-      const { id, numeroPiso, numeroPuerta, Cita } = props;
+      const { id, numeroPiso, numeroPuerta } = props;
   
       if ( !id || isNaN( Number(id)) ) {
         return ['id must be a valid number'];
       }
   
-      if ( !numeroPiso && !numeroPuerta && !Cita ) {
+      if ( !numeroPiso && !numeroPuerta ) {
         return ['At least one property must be provided'];
       }
-      return [undefined, new UpdateConsultorioDto(id, numeroPiso, numeroPuerta, Cita)];
+      return [undefined, new UpdateConsultorioDto(id, numeroPiso, numeroPuerta )];
     }
   
   
