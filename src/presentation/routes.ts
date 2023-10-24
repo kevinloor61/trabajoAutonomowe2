@@ -18,7 +18,7 @@ export class AppRoutes {
     router.use('/api/Doctor', DoctorRoutes.routes );
     router.use('/api/Alergias', AlergiasRoutes.routes );
     router.use('/api/Cita', CitaRoutes.routes );
-    router.use('/api/Paciente', PacienteRoutes.routes);
+    router.use('/api/Pacientes', PacienteRoutes.routes);
     router.use('/api/ActividadesDiarias', ActividadesDiariasRoutes.routes );
     router.use('/api/Consultorio', ConsultorioRoutes.routes );
     return router;

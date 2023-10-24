@@ -5,12 +5,12 @@ export class PacienteRoutes {
   static get routes(): Router {
     const router = Router();
     const pacienteController = new PacienteController();
-    router.get('/', pacienteController.getPaciente);
-    router.get('/:id', pacienteController.getPaciente );
+    router.get('/', pacienteController.getPacientes);
+    router.get('/:id', pacienteController.getPacientes );
     
-    router.post('/', pacienteController.getPaciente );
-    router.put('/:id', pacienteController.updatePaciente );
-    router.delete('/:id', pacienteController.getPaciente );
+    router.post('/', pacienteController.getPacientes );
+    router.put('/:id', pacienteController.updatePacientes );
+    router.delete('/:id', pacienteController.getPacientes );
     return router;
   }
 }
