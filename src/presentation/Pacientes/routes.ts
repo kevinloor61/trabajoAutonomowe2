@@ -8,9 +8,9 @@ export class PacienteRoutes {
     router.get('/', pacienteController.getPacientes);
     router.get('/:id', pacienteController.getPacientes );
     
-    router.post('/', pacienteController.getPacientes );
+    router.post('/', pacienteController.createPacientes );
     router.put('/:id', pacienteController.updatePacientes );
-    router.delete('/:id', pacienteController.getPacientes );
+    router.delete('/:id', pacienteController.deletePacientes );
     return router;
   }
 }
