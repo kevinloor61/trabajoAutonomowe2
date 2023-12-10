@@ -6,7 +6,7 @@ export class PacienteRoutes {
     const router = Router();
     const pacienteController = new PacienteController();
     router.get('/', pacienteController.getPacientes);
-    router.get('/:id', pacienteController.getPacientes );
+    router.get('/:id', pacienteController.getPacientesById );
     
     router.post('/', pacienteController.createPacientes );
     router.put('/:id', pacienteController.updatePacientes );

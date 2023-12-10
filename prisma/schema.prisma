@@ -19,7 +19,7 @@ model Paciente {
   estado    String
   alergiaId    Int?
   alergia    Alergias?    @relation(fields: [alergiaId], references: [id])
-  citas        Cita[]
+  cita        Cita[]
 }
 
 model Doctor {

@@ -4,13 +4,15 @@ export class UpdateAlergiaDto {
         public readonly id: number,
         public readonly nombreAlergias: string,
         public readonly detalleTratamiento?: string,
-
+      
+  
     ){}
   
     get values() {
       const returnObj: {[key: string]: any} = {};
-      if ( this.nombreAlergias ) returnObj.genre = this.nombreAlergias;
-      if ( this.detalleTratamiento ) returnObj.genre = this.detalleTratamiento;
+      if ( this.id ) returnObj.id = this.id;
+      if ( this.nombreAlergias ) returnObj.nombreAlergias = this.nombreAlergias;
+      if ( this.detalleTratamiento ) returnObj.detalleTratamiento = this.detalleTratamiento;
       return returnObj;
     }
   
@@ -22,10 +24,10 @@ export class UpdateAlergiaDto {
         return ['id must be a valid number'];
       }
    
-      if ( !nombreAlergias && !detalleTratamiento ) {
+      if ( !nombreAlergias && !detalleTratamiento) {
         return ['At least one property must be provided'];
       }
-      return [undefined, new UpdateAlergiaDto(id, nombreAlergias, detalleTratamiento)];
+      return [undefined, new UpdateAlergiaDto(id, nombreAlergias, detalleTratamiento )];
     }
   
   

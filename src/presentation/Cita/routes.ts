@@ -6,7 +6,8 @@ export class CitaRoutes {
     const router = Router();
     const citaController = new CitaController();
     router.get('/',citaController.getCita);
-    router.get('/:id', citaController.getCita );
+    router.get('/:id', citaController.getCitaById );
+
     router.post('/', citaController.createCita );
     router.put('/:id', citaController.updateCita );
     router.delete('/:id', citaController.deleteCita );

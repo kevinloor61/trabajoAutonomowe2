@@ -1,14 +1,17 @@
+
+
 export class CreateDoctorDto {
     private constructor(
       public readonly nombre: string,
       public readonly apellido: string,
       public readonly especialidad: string,
       public readonly correo: string,
+  
      
     ){}
     static create( props: {[key:string]: any} ): [string?, CreateDoctorDto?]  {
   
-      const { nombre, apellido, especialidad, correo } = props;
+      const { nombre, apellido, especialidad, correo  } = props;
   
       if ( !nombre ) return ['la propiedad nombre es requerida', undefined];
       if ( !apellido ) return ['la propiedad apellido es requerida', undefined];
@@ -16,6 +19,6 @@ export class CreateDoctorDto {
       if ( !correo ) return ['la propiedad correo es requerida', undefined];
   
   
-      return [undefined, new CreateDoctorDto(nombre, apellido, especialidad, correo)];
+      return [undefined, new CreateDoctorDto(nombre, apellido, especialidad, correo )];
     }
   }

@@ -13,12 +13,12 @@ export class UpdateCitaDto {
     get values() {
       const returnObj: {[key: string]: any} = {};
   
-      if ( this.id ) returnObj.name = this.id;
-      if ( this.fechaCreacion ) returnObj.genre = this.fechaCreacion;
-      if ( this.fechaProgramada ) returnObj.genre = this.fechaProgramada;
-      if ( this.pacienteId ) returnObj.genre = this.pacienteId;
-      if ( this.doctorId ) returnObj.genre = this.doctorId;
-      if ( this.consultorioId ) returnObj.genre = this.consultorioId;
+      if ( this.id ) returnObj.id = this.id;
+      if ( this.fechaCreacion ) returnObj.fechaCreacion = this.fechaCreacion;
+      if ( this.fechaProgramada ) returnObj.fechaProgramada = this.fechaProgramada;
+      if ( this.pacienteId ) returnObj.pacienteID = this.pacienteId;
+      if ( this.doctorId ) returnObj.doctorId = this.doctorId;
+      if ( this.consultorioId ) returnObj.consultorioId = this.consultorioId;
       return returnObj;
     }
   

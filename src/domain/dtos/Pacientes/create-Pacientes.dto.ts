@@ -6,6 +6,7 @@ export class CreatePacienteDto {
     public readonly genero: string,
     public readonly estado: string,
     public readonly alergiaId?: number,
+
    
   ){}
   static create( props: {[key:string]: any} ): [string?, CreatePacienteDto?]  {

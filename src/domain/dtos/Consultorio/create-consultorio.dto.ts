@@ -2,7 +2,6 @@ export class CreateConsultorioDto {
     private constructor(
       public readonly numeroPiso: string,
       public readonly numeroPuerta: string,
-  
      
     ){}
     static create( props: {[key:string]: any} ): [string?, CreateConsultorioDto?]  {

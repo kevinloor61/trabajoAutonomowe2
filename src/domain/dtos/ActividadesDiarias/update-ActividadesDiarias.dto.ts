@@ -11,10 +11,11 @@ export class UpdateActividadesDiariasDto {
   
     get values() {
       const returnObj: {[key: string]: any} = {};
-      if ( this.nombreActividad ) returnObj.genre = this.nombreActividad;
-      if ( this.fechaActividad ) returnObj.genre = this.fechaActividad;
-      if ( this.doctorId ) returnObj.genre = this.doctorId;
-      if ( this.detalleActividad ) returnObj.genre = this.detalleActividad;
+      if ( this.id ) returnObj.id = this.id;
+      if ( this.nombreActividad ) returnObj.nombreActividad = this.nombreActividad;
+      if ( this.fechaActividad ) returnObj.fechaActividad = this.fechaActividad;
+      if ( this.doctorId ) returnObj.doctorId = this.doctorId;
+      if ( this.detalleActividad ) returnObj.detalleActividad = this.detalleActividad;
       return returnObj;
     }
   
